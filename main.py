@@ -9,6 +9,8 @@ mp_draw = mp.solutions.drawing_utils
 
 # Open webcam
 cap = cv2.VideoCapture(0)
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Initialize thresholds and variables
 zoom_threshold = 0.05  # For zoom gesture sensitivity
@@ -137,7 +139,8 @@ while cap.isOpened():
                 cv2.putText(frame, "Fist - Close/Stop", (50, 450), cv2.FONT_HERSHEY_SIMPLEX, 1, (128, 0, 128), 2)
 
     # Display the frame
-    cv2.imshow("Hand Tracking - Pinch, Zoom, Rotate, Move, Thumbs Up/Down, Victory, and Fist Gestures", frame)
+    cv2.imshow("Hand Tracking", frame)
+
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
